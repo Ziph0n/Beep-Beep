@@ -1,0 +1,10 @@
+Package: com.ziph0n.beepbeep
+Name: Beep-Beep
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: Ziph0n
+Author: Ziph0n
+Section: Tweaks
+Version: 0.0.1-18
+Installed-Size: 84
