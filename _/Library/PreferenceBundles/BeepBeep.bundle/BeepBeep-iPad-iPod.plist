@@ -45,24 +45,6 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>footerText</key>
-			<string>If you want a vibration when your plug-in your device, enable the 'Vibration' switch.</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<true/>
-			<key>defaults</key>
-			<string>com.ziph0n.beepbeep</string>
-			<key>key</key>
-			<string>vibration</string>
-			<key>label</key>
-			<string>Vibration</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>About</string>
 		</dict>

@@ -7,7 +7,11 @@
 @implementation BeepBeepListController
 - (id)specifiers {
 	if(_specifiers == nil) {
+	    if(UI_USER_INTERFACE_IDIOM () == UIUserInterfaceIdiomPad || [[[UIDevice currentDevice] model] isEqual:@"iPod touch"]) {
+		_specifiers = [[self loadSpecifiersFromPlistName:@"BeepBeep-iPad-iPod" target:self] retain];
+	    } else {
 		_specifiers = [[self loadSpecifiersFromPlistName:@"BeepBeep" target:self] retain];
+	    }
 	}
 	return _specifiers;
 }

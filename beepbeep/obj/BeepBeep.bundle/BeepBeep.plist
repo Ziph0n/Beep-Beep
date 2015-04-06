@@ -34,7 +34,7 @@
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
-			<false/>
+			<true/>
 			<key>defaults</key>
 			<string>com.ziph0n.beepbeep</string>
 			<key>key</key>
@@ -52,7 +52,7 @@
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
-			<false/>
+			<true/>
 			<key>defaults</key>
 			<string>com.ziph0n.beepbeep</string>
 			<key>key</key>
