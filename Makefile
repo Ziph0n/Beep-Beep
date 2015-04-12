@@ -6,6 +6,9 @@ TWEAK_NAME = BeepBeep
 BeepBeep_FILES = Tweak.xm
 BeepBeep_FRAMEWORKS = UIKit AudioToolbox AVFoundation
 
+export GO_EASY_ON_ME := 1
+
+
 include $(THEOS_MAKE_PATH)/tweak.mk
 
 after-install::

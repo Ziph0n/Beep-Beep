@@ -1,7 +1,13 @@
 #import <Preferences/Preferences.h>
+#import <Social/SLComposeViewController.h>
+#import <Social/SLServiceTypes.h>
+#import <UIKit/UIKit.h>
 
 @interface BeepBeepListController: PSListController {
 }
+@end
+
+@interface ViewController : UIViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @end
 
 @implementation BeepBeepListController
@@ -12,8 +18,19 @@
 	    } else {
 		_specifiers = [[self loadSpecifiersFromPlistName:@"BeepBeep" target:self] retain];
 	    }
+	UIBarButtonItem *shareButton ([[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(composeTweet:)]);
+	shareButton.tag = 1;
+	[[self navigationItem] setRightBarButtonItem:shareButton];
+	[shareButton release];
 	}
 	return _specifiers;
+}
+
+-(void)composeTweet:(id)sender
+{
+	SLComposeViewController * composeController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+	[composeController setInitialText:@"I'm using Beep Beep, an awesome Cydia tweak by @Ziph0n. Get it now!"];
+	[self presentViewController:composeController animated:YES completion:nil];
 }
 
 

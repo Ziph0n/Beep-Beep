@@ -28,19 +28,63 @@
 			<key>label</key>
 			<string>Options</string>
 			<key>footerText</key>
-			<string>If you want to hear the charging sound when you plug-in your device, enable the 'Charging Sound' switch.</string>
+			<string>If you want to hear the charging sound when you plug-in your device, enable the 'Charging Sound' switch. If you want to choose a custom charging sound, enable the 'Custom Charging Sound' switch and choose your sound from the Sound List</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
-			<true/>
+			<false/>
 			<key>defaults</key>
 			<string>com.ziph0n.beepbeep</string>
 			<key>key</key>
 			<string>sound</string>
 			<key>label</key>
 			<string>Charging Sound</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.ziph0n.beepbeep</string>
+			<key>key</key>
+			<string>custom</string>
+			<key>label</key>
+			<string>Custom Charging Sound</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>label</key>
+			<string>Sound List</string>
+			<key>detail</key>
+			<string>SoundList</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>This will stop the screen from waking when connecting (or disconnecting) to a power source. (Thanks to /u/sinfool!)</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.ziph0n.beepbeep</string>
+			<key>key</key>
+			<string>screen</string>
+			<key>label</key>
+			<string>Don't turn on the screen</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Warning! Enabling this option will also remove all Activator assignments using the events 'connected' or 'disconnected' from power.</string>
 		</dict>
 		<dict>
 			<key>cell</key>
