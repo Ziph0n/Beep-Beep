@@ -1,7 +1,7 @@
 Package: com.ziph0n.beepbeep
 Name: Beep Beep
 Depends: mobilesubstrate
-Version: 1.0
+Version: 2.0
 Architecture: iphoneos-arm
 Description: Choose what happens when you plug in your device!
 Maintainer: Ziph0n

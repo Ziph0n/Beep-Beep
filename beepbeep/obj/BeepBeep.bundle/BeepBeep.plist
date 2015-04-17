@@ -28,7 +28,7 @@
 			<key>label</key>
 			<string>Options</string>
 			<key>footerText</key>
-			<string>If you want to hear the charging sound when you plug-in your device, enable the 'Charging Sound' switch. If you want to choose a custom charging sound, enable the 'Custom Charging Sound' switch and choose your sound from the Sound List</string>
+			<string>If you want to hear the charging sound when you plug-in your device, enable the 'Charging Sound' switch. If you want to choose a custom charging sound, enable the 'Custom Charging Sound' switch and choose your sound from the Sound List. See the tutorial below for more informations.</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -56,11 +56,19 @@
 		</dict>
 		<dict>
 			<key>cell</key>
-			<string>PSLinkCell</string>
+			<string>PSLinkListCell</string>
+			<key>detail</key>
+			<string>CustomListItemsController</string>
+			<key>defaults</key>
+			<string>com.ziph0n.beepbeep</string>
+			<key>key</key>
+			<string>currentSound</string>
 			<key>label</key>
 			<string>Sound List</string>
-			<key>detail</key>
-			<string>SoundList</string>
+			<key>valuesDataSource</key>
+			<string>themeValues</string>
+			<key>titlesDataSource</key>
+			<string>themeTitles</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -110,6 +118,18 @@ plug-in your device, enable the 'Vibration' switch.</string>
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>About</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>label</key>
+			<string>Tutorial: Custom charging sound</string>
+			<key>detail</key>
+			<string>Tutorial</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
 		</dict>
 		<dict>
 			<key>action</key>

@@ -2,6 +2,11 @@
 #import <Social/SLComposeViewController.h>
 #import <Social/SLServiceTypes.h>
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVAudioPlayer.h>
+
+#define kBundlePath @"/Library/Application Support/BeepBeep/Sounds/"
+#define kSelfBundlePath @"/Library/PreferenceBundles/BeepBeep.bundle"
+
 
 @interface BeepBeepListController: PSListController {
 }
@@ -33,6 +38,25 @@
 	[self presentViewController:composeController animated:YES completion:nil];
 }
 
+-(NSArray *)themeTitles {
+    NSMutableArray* files = [[[NSFileManager defaultManager]
+			      contentsOfDirectoryAtPath:kBundlePath error:nil] mutableCopy];
+    for (int i = 0; i < files.count; i++) {
+	NSString *file = [files objectAtIndex:i];
+	file = [file stringByReplacingOccurrencesOfString:@".bundle" withString:@""];
+	[files replaceObjectAtIndex:i withObject:file];
+    }
+
+    return files;
+}
+
+-(NSArray *)themeValues {
+    NSMutableArray* files = [[[NSFileManager defaultManager]
+			      contentsOfDirectoryAtPath:kBundlePath error:nil] mutableCopy];
+
+    return files;
+}
+
 
 - (void)twitter {
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://user?screen_name=Ziph0n"]]) {
@@ -54,6 +78,52 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto:ziph0ntweak@gmail.com?subject=Beep-Beep"]];
 }
 
+@end
+
+@interface CustomListItemsController : PSListItemsController
+@end
+
+AVAudioPlayer *audioPlayer;
+
+@implementation CustomListItemsController
+
+-(void)stopAudio{
+
+if(audioPlayer && [audioPlayer isPlaying]){
+    [audioPlayer stop];
+    audioPlayer=nil;
+    }
+}
+
+- (void)preview:(id)arg1
+{
+    [self stopAudio];
+
+    NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.ziph0n.beepbeep.plist"];
+
+    NSString *currentSound = [prefs objectForKey:@"currentSound"];
+    if ([currentSound length] > 3) { currentSound = [currentSound substringToIndex:[currentSound length] - 4]; }
+    NSString *mySoundPath = [[NSBundle bundleWithPath:@"/Library/Application Support/BeepBeep/Sounds/"] pathForResource:currentSound ofType:@"caf"];
+    NSURL *mySoundURL = [[NSURL alloc] initFileURLWithPath:mySoundPath];
+
+    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:mySoundURL error:nil];
+		audioPlayer.numberOfLoops = 0;
+		audioPlayer.volume = 1.0;
+		[audioPlayer play];
+}
+
+-(id)initForContentSize:(CGSize)contentSize
+{
+    if (!(self = [super initForContentSize:contentSize])) {
+    return nil;
+    }
+	    UIBarButtonItem *previewButton([[UIBarButtonItem alloc] initWithTitle:@"Preview" style:UIBarButtonItemStyleDone target:self action:@selector(preview:)]);
+	    previewButton.tag = 1;
+	    [[self navigationItem] setRightBarButtonItem:previewButton];
+	    [previewButton release];
+	
+    return self;
+}
 @end
 
 // vim:ft=objc
