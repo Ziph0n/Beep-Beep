@@ -12,8 +12,7 @@
 }
 @end
 
-@interface ViewController : UIViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
-@end
+
 
 @implementation BeepBeepListController
 - (id)specifiers {
@@ -35,7 +34,9 @@
 {
 	SLComposeViewController * composeController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
 	[composeController setInitialText:@"I'm using Beep Beep, an awesome Cydia tweak by @Ziph0n. Get it now!"];
-	[self presentViewController:composeController animated:YES completion:nil];
+
+	[self.parentController presentViewController:composeController animated:YES completion:nil];
+
 }
 
 -(NSArray *)themeTitles {
